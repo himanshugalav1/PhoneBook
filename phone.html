@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>PHONE BOOK WEBSITE</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;&family=Roboto:wght@300;400;500&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-database.js"></script>
+
+    
+    <link rel="stylesheet" href="style.css" />
+    <script>
+      function redirectConsoleOutput() {
+        var consoleOutput = document.getElementById('console-output')
+        console.log = function (message) {
+          consoleOutput.innerText += message + '\n'
+        }
+      }
+    </script>
+    
+
+    <script type="module">
+      // Import the functions you need from the SDKs you need
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-app.js";
+      import { getDatabase, ref, push } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-database.js";
+      
+      // Your web app's Firebase configuration
+      const firebaseConfig = {
+        apiKey: "AIzaSyDD-8Ms1fCfS-7JPWDS24Tr308degd-5HU",
+        authDomain: "phonebook-ed910.firebaseapp.com",
+        databaseURL: "https://phonebook-ed910-default-rtdb.firebaseio.com",
+        projectId: "phonebook-ed910",
+        storageBucket: "phonebook-ed910.appspot.com",
+        messagingSenderId: "623639028835",
+        appId: "1:623639028835:web:acfabbb0c494afa7568456"
+      };
+    
+      // Initialize Firebase
+      const app = initializeApp(firebaseConfig);
+    
+      function main() {
+        var name = document.getElementById('addname').value;
+        var contact = document.getElementById('addcontact').value;
+
+        if (!d()) {
+          console.log('outputAnswer returned false. Skipping script execution.');
+          return;
+        }
+
+        // Get a reference to the database
+        const db = getDatabase();
+    
+        // Push the new contact data to the database
+        const newContactRef = push(ref(db, 'contacts'), {
+          name: name,
+          contact: contact
+        });
+    
+        // Log the generated contact key
+        console.log('New contact key:', newContactRef.key);
+    
+        // Clear the form fields
+        document.getElementById('addname').value = '';
+        document.getElementById('addcontact').value = '';
+      }
+    
+    </script>
+    
+  </head>
+
+  <body onload="redirectConsoleOutput()">
+    <div class="description">
+      <h1 id="head">PHONE BOOK WEBSITE</h1>
+      <h2 id="desc">A Website to store contacts and search your contacts</h2>
+    </div>
+
+    <div class="fxns">
+      <div class="inputarea">
+        <div class="inputarea1">
+          <h2 id="block">Add a contact</h2>
+          <div class="inputs">
+            <label id="namelabel" for="name">Name:</label>
+            <input type="text" id="addname" name="name" required />
+            <label id="contactlabel" for="contact">Contact Number:</label>
+            <input type="number" id="addcontact" name="contact" required />
+            <button id="mybtn1" onclick="addContact()" value="add">
+              ADD CONTACT
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="inputarea">
+        <div class="inputarea1">
+          <h2 id="block">Search by name</h2>
+          <div class="inputs">
+            <label id="namelabel" for="name">Name:</label>
+            <input type="text" id="getbyname" name="name" required />
+            <button id="mybtn2" onclick="main()" value="searchname">
+              SEARCH
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="inputarea">
+        <div class="inputarea1">
+          <h2 id="block">Search by contact</h2>
+          <div class="inputs">
+            <label id="namelabel" for="name">Contact Number:</label>
+            <input type="text" id="getbycontact" name="name" required />
+            <button id="mybtn3" onclick="main()" value="searchcontact">
+              SEARCH
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="inputarea">
+        <div class="inputarea1 area1">
+          <h2 id="block" style="display: inline">Show all contact</h2>
+          <button
+            id="mybtn4"
+            style="display: inline"
+            onclick="main()"
+            value="print"
+          >
+            SHOW ALL
+          </button>
+        </div>
+      </div>
+      <div class="inputarea">
+        <div class="inputarea1">
+          <h2 id="block">Display all contacts starting with name initials</h2>
+          <div class="inputs">
+            <label id="namelabel" for="name">Name:</label>
+            <input type="text" id="initname" name="name" required />
+            <button id="mybtn5" onclick="main()" value="nameinit">
+              SEARCH
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="inputarea">
+        <div class="inputarea1">
+          <h2 id="block">
+            Display all contacts starting with contact initials
+          </h2>
+          <div class="inputs">
+            <label id="namelabel" for="name">Contact:</label>
+            <input type="text" id="initcontact" name="name" required />
+            <button id="mybtn6" onclick="main()" value="contactinit">
+              SEARCH
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="showout">
+      <pre id="console-output"></pre>
+    </div>
+    
+  </body>
+  <script type="module" src="trie.js"></script>
+</html>

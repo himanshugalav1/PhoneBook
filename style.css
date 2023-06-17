@@ -1,0 +1,84 @@
+*{
+  background-color: black;
+  color: white;
+  font-family: 'Roboto', sans-serif;
+}
+div.description{
+  text-align: center;
+  margin-top: 20px;
+}
+#head{
+  font-family: 'Orbitron', sans-serif;
+  font-weight: bolder;
+  font-size: 60px;        
+  color: rgb(161, 231, 255);
+  text-shadow: 2px white solid;
+}
+#desc{
+  font-weight: 500;
+  margin-bottom: 80px;
+}
+div.fxns{
+  width: 80%;
+  margin: auto;
+}
+div.inputarea{
+  width: 90%;
+  margin: auto;
+  padding: 10px;
+  font-size: 20px;
+  border: 1px white solid;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+}
+div.area1{
+  margin-top: 20px;
+}
+div.inputarea1{
+  margin-left: 3%;
+}
+div.inputs{
+  margin-left: 20px;
+}
+#block{
+  font-family: 'roboto', sans-serif;
+  font-weight: lighter;
+  font-size: x-large;
+  margin-top: 8px;
+}
+input{
+  background-color: rgb(223, 214, 214);
+  color: black;
+  font-size: 20px;
+  border-radius: 6px;
+}
+input#name{
+  margin-right: 20px;
+}
+label#contactlabel{
+  margin-left: 20px;
+}
+button#mybtn4{
+  translate: 0px -5px;
+}
+button#mybtn1, #mybtn2, #mybtn3, 
+#mybtn4, #mybtn5, #mybtn6{
+  margin: auto;
+  text-align: center;
+  margin-left: 20px;
+  background-color: blueviolet;
+  color: white;
+  border-color: white;
+  border-radius: 8px;
+  font-size: 17px;
+  padding-top: 7px;
+  padding-bottom: 7px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+div.showout{
+  margin-top: 10%;
+  width: 60%;
+  margin: auto; 
+}
